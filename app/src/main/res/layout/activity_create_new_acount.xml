@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateNewAcount">
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/textView2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Create New Account"
+          android:textAlignment="center"
+          android:textColor="@color/purple_700"
+          android:textSize="34sp"
+          android:textStyle="bold" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="62dp"
+          android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/inputdis"
+            android:ems="10"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:hint="Enter FirstName"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:background="@drawable/inputdis"
+            android:ems="10"
+            android:hint="Enter LastName"
+            android:inputType="textPersonName" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="62dp"
+          android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/inputdis"
+            android:ems="10"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
+            android:hint="Enter Phone"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:layout_weight="1"
+            android:background="@drawable/inputdis"
+            android:ems="10"
+            android:hint="Enter Pasword"
+            android:inputType="textPassword" />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/Address"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/inputdis"
+            android:ems="10"
+            android:hint="Enter Your Address"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <EditText
+            android:id="@+id/Allergy"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/inputdis"
+            android:ems="10"
+            android:hint="Enter Allergy"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="48dp"
+          android:layout_weight="1"
+          android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/malerdio"
+            android:layout_width="190dp"
+            android:layout_height="match_parent">
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/Femalerdio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="151dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:orientation="horizontal">
+
+      </LinearLayout>
+
+      <Button
+          android:id="@+id/button"
+          android:layout_width="114dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@drawable/custombutton"
+          android:text="Save"
+          />
+
+    </LinearLayout>
+  </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
