@@ -30,15 +30,32 @@
           android:textAlignment="center"
           android:textColor="@color/purple_700"
           android:textSize="34sp"
+          android:layout_marginTop="30dp"
           android:textStyle="bold" />
 
+      <ImageView
+          android:id="@+id/imageView3"
+          android:layout_width="match_parent"
+          android:layout_height="132dp"
+          android:src="@drawable/ic_baseline_account_box_24"
+          android:layout_marginBottom="45dp"/>
+      <TextView
+          android:id="@+id/textView3"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Person infomation"
+          android:textAlignment="center"
+          android:textColor="@color/purple_700"
+          android:textSize="20sp"
+          android:layout_marginBottom="30dp"
+          android:textStyle="bold" />
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="62dp"
           android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/edtfname"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_weight="1"
@@ -50,7 +67,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/edtlname"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_weight="1"
@@ -127,25 +144,6 @@
       </LinearLayout>
 
       <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="48dp"
-          android:layout_weight="1"
-          android:orientation="horizontal">
-
-        <RadioGroup
-            android:id="@+id/malerdio"
-            android:layout_width="190dp"
-            android:layout_height="match_parent">
-
-        </RadioGroup>
-
-        <RadioGroup
-            android:id="@+id/Femalerdio"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-      </LinearLayout>
-
-      <LinearLayout
           android:layout_width="151dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -154,7 +152,7 @@
       </LinearLayout>
 
       <Button
-          android:id="@+id/button"
+          android:id="@+id/savebutton"
           android:layout_width="114dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"

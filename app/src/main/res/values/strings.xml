@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PSApp</string>
+
+    <string-array name="chooseGender">
+        <item>Male</item>
+        <item>Female</item>
+
+    </string-array>
 </resources>
