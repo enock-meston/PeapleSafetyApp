@@ -5,53 +5,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_gravity="center"
     tools:context=".CreateNewAcount">
-
+  <include
+    android:id="@+id/toolbar"
+    layout="@layout/bar_layout"/>
   <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_width="425dp"
+      android:layout_height="590dp"
       android:layout_marginStart="16dp"
       android:layout_marginEnd="16dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
-
+      app:layout_constraintTop_toBottomOf="@+id/toolbar"
+      app:layout_constraintVertical_bias="0.0">
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="vertical">
 
       <TextView
           android:id="@+id/textView2"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
           android:text="Create New Account"
           android:textAlignment="center"
           android:textColor="@color/purple_700"
           android:textSize="34sp"
-          android:layout_marginTop="30dp"
           android:textStyle="bold" />
 
       <ImageView
           android:id="@+id/imageView3"
           android:layout_width="match_parent"
           android:layout_height="132dp"
-          android:src="@drawable/ic_baseline_account_box_24"
-          android:layout_marginBottom="45dp"/>
+          android:layout_marginBottom="45dp"
+          android:src="@drawable/ic_baseline_account_box_24" />
+
       <TextView
           android:id="@+id/textView3"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_marginBottom="30dp"
           android:text="Person infomation"
           android:textAlignment="center"
           android:textColor="@color/purple_700"
           android:textSize="20sp"
-          android:layout_marginBottom="30dp"
           android:textStyle="bold" />
+
       <LinearLayout
-          android:layout_width="match_parent"
+          android:layout_width="335dp"
           android:layout_height="62dp"
+          android:layout_gravity="center"
           android:orientation="horizontal">
 
         <EditText
@@ -61,26 +69,26 @@
             android:layout_weight="1"
             android:background="@drawable/inputdis"
             android:ems="10"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
             android:hint="Enter FirstName"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
 
         <EditText
             android:id="@+id/edtlname"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
             android:background="@drawable/inputdis"
             android:ems="10"
             android:hint="Enter LastName"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
       </LinearLayout>
 
       <LinearLayout
-          android:layout_width="match_parent"
+          android:layout_width="335dp"
           android:layout_height="62dp"
           android:orientation="horizontal">
 
@@ -90,31 +98,31 @@
             android:layout_height="45dp"
             android:layout_weight="1"
             android:background="@drawable/inputdis"
-            android:ems="10"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
             android:drawableStart="@drawable/ic_baseline_phone_24"
+            android:ems="10"
             android:hint="Enter Phone"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:drawableStart="@drawable/ic_baseline_lock_24"
             android:layout_weight="1"
             android:background="@drawable/inputdis"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
             android:ems="10"
             android:hint="Enter Pasword"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
 
       </LinearLayout>
 
       <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
+          android:layout_width="335dp"
+          android:layout_height="62dp"
           android:layout_weight="1"
           android:orientation="horizontal">
 
@@ -144,21 +152,21 @@
       </LinearLayout>
 
       <LinearLayout
-          android:layout_width="151dp"
-          android:layout_height="match_parent"
+          android:layout_width="335dp"
+          android:layout_height="62dp"
           android:layout_weight="1"
           android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/savebutton"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/custombutton"
+            android:text="Save" />
       </LinearLayout>
 
-      <Button
-          android:id="@+id/savebutton"
-          android:layout_width="114dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:background="@drawable/custombutton"
-          android:text="Save"
-          />
 
     </LinearLayout>
   </ScrollView>
