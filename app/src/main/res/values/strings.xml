@@ -6,4 +6,6 @@
         <item>Female</item>
 
     </string-array>
+
+    <string name="prefLoginState">loginstate</string>
 </resources>

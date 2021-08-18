@@ -79,7 +79,7 @@ public class CreateNewAcount extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Registering New Account");
         progressDialog.show();
-        String url ="http://192.168.20.200/personsafety/register.php";
+        String url ="http://192.168.20.225:8080/personsafety/register.php";
         RequestQueue requestQueue = Volley.newRequestQueue(CreateNewAcount.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
