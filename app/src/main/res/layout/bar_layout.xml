@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/purple_700"
-    style="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:popupTheme="@style/menustyle"
+    android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
     app:title="@string/app_name"
+    android:elevation="4dp"
     app:titleTextColor="@color/teal_700"
     android:id="@+id/toolbar">
 

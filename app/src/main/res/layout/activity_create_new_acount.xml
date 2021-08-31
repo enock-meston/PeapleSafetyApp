@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
 
     tools:context=".CreateNewAcount">
-  <include
-    android:id="@+id/toolbar"
-    layout="@layout/bar_layout"/>
 
     <ScrollView
         android:layout_width="383dp"

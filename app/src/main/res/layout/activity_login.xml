@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/bar_layout" />
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="166dp"
@@ -17,23 +13,22 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:contentDescription="TODO"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="8dp"
         android:text="Login Form"
         android:textColor="@color/purple_700"
         android:textSize="34sp"
@@ -42,7 +37,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
 
     <EditText
         android:id="@+id/txtphonelg"

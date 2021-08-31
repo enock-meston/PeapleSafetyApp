@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/editProfilemenu"
+        android:icon="@drawable/ic_baseline_edit_24"
+        app:showAsAction="ifRoom"
+        android:title="Edit Profile"
+        />
+
+    <item android:id="@+id/Profilemenu"
+        android:icon="@drawable/ic_baseline_info_24"
+        app:showAsAction="ifRoom"
+        android:title="My Profile"
+        />
+
+    <item android:id="@+id/editEmergencymenu"
+        android:title="Edit Emergency"
+        />
+
+    <item android:id="@+id/logoutmenu"
+        android:title="Logout"
+        />
+</menu>
