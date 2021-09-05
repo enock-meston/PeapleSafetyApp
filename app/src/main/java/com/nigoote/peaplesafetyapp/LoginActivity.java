@@ -25,15 +25,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
+    public static final String TEXT_TO_SENT ="phonenumber";
      TextView NewAccountLink;
      Button login;
      CheckBox loginState;
      EditText PhoneNumberLg,PasswordLg;
     SharedPreferences sharedPreferences;
+    private String phone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +75,16 @@ public class LoginActivity extends AppCompatActivity {
         String loginStatus= sharedPreferences.getString(getResources().getString(R.string.prefLoginState),"");
 
         if (loginStatus.equals("loggedin")){
-            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+            String txtph= PhoneNumberLg.getText().toString();
+
         }
+    }
+
+    private void sendDate() {
+        phone = PhoneNumberLg.getText().toString().trim();
+        Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+        intent.putExtra(HomeActivity.PHONE,phone);
+        startActivity(intent);
     }
 
     private void login(final String phonenumber,final String password){
@@ -81,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Logging");
         progressDialog.show();
-        String url ="http://192.168.20.225:8080/personsafety/login.php";
+        String url ="http://192.168.20.170:8080/personsafety/login.php";
         RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -96,7 +108,8 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString(getResources().getString(R.string.prefLoginState),"loggedout");
                     }
                     editor.apply();
-                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                    sendDate();
+//                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                 }else{
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
@@ -114,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> param = new HashMap<String, String>();
                 param.put("phonenumber",phonenumber);
-                param.put("password",password);;
+                param.put("password",password);
                 return param;
             }
         };

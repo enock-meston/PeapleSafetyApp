@@ -32,7 +32,8 @@ import java.util.Map;
 
 public class CreateNewAcount extends AppCompatActivity {
 
-    EditText FirstName,LastName,PhoneNUmber,Pass,Addresses,Allergy;
+    EditText FirstName,LastName,PhoneNUmber,GaudianPhoneNumber,Pass,Addresses,Allergy;
+
     Button BtnNewAccount;
     String fname,lname,phone,password1,address,allergy;
     RequestQueue requestQueue;
@@ -45,6 +46,7 @@ public class CreateNewAcount extends AppCompatActivity {
         FirstName = (EditText) findViewById(R.id.edtfname);
         LastName = (EditText) findViewById(R.id.edtlname);
         PhoneNUmber = (EditText) findViewById(R.id.editTextPhone);
+        GaudianPhoneNumber = (EditText) findViewById(R.id.editTextGaudianPhoneNumber);
         Pass = (EditText) findViewById(R.id.editTextTextPassword);
         Addresses = (EditText) findViewById(R.id.Address);
         Allergy = (EditText) findViewById(R.id.Allergy);
@@ -56,15 +58,16 @@ public class CreateNewAcount extends AppCompatActivity {
                 String txtfn= FirstName.getText().toString();
                 String txtln= LastName.getText().toString();
                 String txtph= PhoneNUmber.getText().toString();
+                String txtgaudianph= PhoneNUmber.getText().toString();
                 String txtpass= Pass.getText().toString();
                 String txtadd= Addresses.getText().toString();
                 String txtallergy= Allergy.getText().toString();
 
-                if (TextUtils.isEmpty(txtfn) || TextUtils.isEmpty(txtln) || TextUtils.isEmpty(txtph)
+                if (TextUtils.isEmpty(txtfn) || TextUtils.isEmpty(txtln) || TextUtils.isEmpty(txtph) || TextUtils.isEmpty(txtgaudianph)
                         || TextUtils.isEmpty(txtpass) || TextUtils.isEmpty(txtadd) || TextUtils.isEmpty(txtallergy)){
                     Toast.makeText(CreateNewAcount.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
                 }else{
-                    registerNewAccount(txtfn,txtln,txtph,txtpass,txtadd,txtallergy);
+                    registerNewAccount(txtfn,txtln,txtph,txtgaudianph,txtpass,txtadd,txtallergy);
                 }
 
 
@@ -73,13 +76,14 @@ public class CreateNewAcount extends AppCompatActivity {
 
     }
 
-    private void registerNewAccount(final String firstname,final String lastname,final String phonenumber,final String password,final String address,final String allergy){
+    private void registerNewAccount(final String firstname,final String lastname,final String phonenumber,
+                                    final String Gaudianphonenumber,final String password,final String address,final String allergy){
         ProgressDialog progressDialog = new ProgressDialog(CreateNewAcount.this);
         progressDialog.setCancelable(false);
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Registering New Account");
         progressDialog.show();
-        String url ="http://192.168.20.225:8080/personsafety/register.php";
+        String url ="http://192.168.20.170:8080/personsafety/register.php";
         RequestQueue requestQueue = Volley.newRequestQueue(CreateNewAcount.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -89,7 +93,6 @@ public class CreateNewAcount extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(CreateNewAcount.this, response, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CreateNewAcount.this,LoginActivity.class));
-                    finish();
                 }else{
                     progressDialog.dismiss();
                     Toast.makeText(CreateNewAcount.this, response, Toast.LENGTH_SHORT).show();
@@ -109,6 +112,7 @@ public class CreateNewAcount extends AppCompatActivity {
                 param.put("firstname",firstname);
                 param.put("lastname",lastname);
                 param.put("phonenumber",phonenumber);
+                param.put("GaudianPhoneNumber",Gaudianphonenumber);
                 param.put("password",password);
                 param.put("address",address);
                 param.put("allergy",allergy);
@@ -120,5 +124,5 @@ public class CreateNewAcount extends AppCompatActivity {
 //        MySingleton.getmInstance(CreateNewAcount.this).addToRequestQueue(request);
         requestQueue.add(request);
 
-    }
+    }//end of registerNewAccount
 }

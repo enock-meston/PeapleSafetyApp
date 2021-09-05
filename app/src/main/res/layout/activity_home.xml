@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/viewPhonetxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -24,32 +24,33 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="171dp"
-        android:layout_height="139dp"
+        android:id="@+id/imgLocation"
+        android:layout_width="167dp"
+        android:layout_height="81dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintEnd_toStartOf="@+id/imgpolicehelp"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/viewPhonetxt"
         app:srcCompat="@drawable/location" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imgpolicehelp"
         android:layout_width="185dp"
-        android:layout_height="138dp"
+        android:layout_height="81dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/viewPhonetxt"
         app:srcCompat="@drawable/help" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imgvoice"
         android:layout_width="130dp"
-        android:layout_height="161dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imgpolicehelp"
         app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
 
     <TextView
@@ -60,7 +61,7 @@
         android:layout_marginTop="2dp"
         android:text="Send Yout Location"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLocation" />
 
     <TextView
         android:id="@+id/textView5"
@@ -68,9 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="44dp"
-        android:text="Emergency Help"
+        android:text="Call Police Helpline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imgpolicehelp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -82,7 +83,7 @@
         android:text="Send Your Allergy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imgvoice" />
 
 
     <!--    <Button-->

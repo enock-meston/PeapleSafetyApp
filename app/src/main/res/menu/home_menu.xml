@@ -13,9 +13,6 @@
         android:title="My Profile"
         />
 
-    <item android:id="@+id/editEmergencymenu"
-        android:title="Edit Emergency"
-        />
 
     <item android:id="@+id/logoutmenu"
         android:title="Logout"
