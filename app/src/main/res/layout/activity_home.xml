@@ -47,8 +47,9 @@
         android:id="@+id/imgvoice"
         android:layout_width="130dp"
         android:layout_height="81dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgpolicehelp"
         app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
@@ -84,6 +85,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgvoice" />
+
+    <ImageView
+        android:id="@+id/playsound"
+        android:layout_width="48dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toEndOf="@+id/imgvoice"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
 
     <!--    <Button-->
