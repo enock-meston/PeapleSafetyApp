@@ -58,7 +58,7 @@ public class CreateNewAcount extends AppCompatActivity {
                 String txtfn= FirstName.getText().toString();
                 String txtln= LastName.getText().toString();
                 String txtph= PhoneNUmber.getText().toString();
-                String txtgaudianph= PhoneNUmber.getText().toString();
+                String txtgaudianph= GaudianPhoneNumber.getText().toString();
                 String txtpass= Pass.getText().toString();
                 String txtadd= Addresses.getText().toString();
                 String txtallergy= Allergy.getText().toString();
@@ -83,7 +83,7 @@ public class CreateNewAcount extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Registering New Account");
         progressDialog.show();
-        String url ="http://192.168.20.170:8080/personsafety/register.php";
+        String url ="http://192.168.0.100:8080/personsafety/register.php";
         RequestQueue requestQueue = Volley.newRequestQueue(CreateNewAcount.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

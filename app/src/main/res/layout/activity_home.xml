@@ -78,11 +78,9 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="186dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
         android:text="Send Your Allergy"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgvoice" />
 
@@ -90,12 +88,41 @@
         android:id="@+id/playsound"
         android:layout_width="48dp"
         android:layout_height="46dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toEndOf="@+id/imgvoice"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Play Your Voice Allergy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/playsound" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="209dp"
+        android:layout_height="251dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:shadowColor="@color/purple_700"
+        android:shadowDx="12"
+        android:shadowDy="30"
+        android:shadowRadius="20"
+        android:text="@string/Instruction"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 
     <!--    <Button-->

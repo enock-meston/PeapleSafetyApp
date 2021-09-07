@@ -8,4 +8,11 @@
     </string-array>
 
     <string name="prefLoginState">loginstate</string>
+
+    <string name="Instruction">
+        <b>Instruction:</b>
+        1.Your Information Is Registered.
+        2.Always This App working on the Internet Connection.
+        3.Always This App working GPS.
+    </string>
 </resources>
