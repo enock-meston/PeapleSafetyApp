@@ -4,14 +4,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.speech.tts.TextToSpeech;
+import android.telephony.SmsManager;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,38 +46,52 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.math.BigInteger;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button logout;
-    TextView viewPhone;
-    ImageView LocationImage,PoliceHelpLineImage,VoiceImage,imagePlay;
+    Button l;
+    TextView viewPhone, locationView;
+    ImageView LocationImage, PoliceHelpLineImage, VoiceImage, imagePlay;
     TextToSpeech textToSpeech;
+    FusedLocationProviderClient fusedLocationProviderClient;
 
-    public static final String PHONE="PHONE";
+    public static final String PHONE = "PHONE";
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         viewPhone = (TextView) findViewById(R.id.viewPhonetxt);
+        locationView = (TextView) findViewById(R.id.txtmylocation);
         LocationImage = (ImageView) findViewById(R.id.imgLocation);
         PoliceHelpLineImage = (ImageView) findViewById(R.id.imgpolicehelp);
         VoiceImage = (ImageView) findViewById(R.id.imgvoice);
         imagePlay = (ImageView) findViewById(R.id.playsound);
 
+//        initialize fusedLocationProviderClient
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS){
+                if (status == TextToSpeech.SUCCESS) {
                     // select language
                     int lang = textToSpeech.setLanguage(Locale.ENGLISH);
                 }
@@ -73,7 +103,19 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(HomeActivity.this, "Your Location Clicked", Toast.LENGTH_SHORT).show();
+                //ckech permission
+                if (ActivityCompat.checkSelfPermission(HomeActivity.this,
+                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+//                    when permision granted
+                    getLocation();
+//                    sendLocationMethod();
+                } else {
+                    //when permision Denied
+                    ActivityCompat.requestPermissions(HomeActivity.this,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+                }
             }
+
         });
 //        ends Location Button
 
@@ -117,12 +159,61 @@ public class HomeActivity extends AppCompatActivity {
 //        ends of play my sound by click image
 
 
-        final SharedPreferences sharedPreferences = getSharedPreferences("UserInfo",MODE_PRIVATE);
+        final SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
         Intent intent1 = getIntent();
         String extraPhoneNumber = intent1.getStringExtra(PHONE);
-        Log.e("enock","ee"+extraPhoneNumber);
-        viewPhone.setText("Number is "+extraPhoneNumber);
+        Log.e("enock", "ee" + extraPhoneNumber);
+        viewPhone.setText("Number is " + extraPhoneNumber);
     }
+
+
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                //initialize location
+                Location location = task.getResult();
+                if (location != null) {
+                    try {
+                        Geocoder geocoder = new Geocoder(HomeActivity.this,
+                                Locale.getDefault());
+                        List<Address> addressList = geocoder.getFromLocation(
+                                location.getLatitude(), location.getLongitude(), 1
+                        );
+//set latitude
+                        locationView.setText(Html.fromHtml(
+                                "<font color='#6200EE'><b>Latitude</b></font>" +
+                                        addressList.get(0).getLatitude()
+                                //=============
+                                //=============
+
+                                //=============
+                                //=============
+
+
+                        ));
+                        sendLocationMethod();
+                        sendLocationMethodMessage();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
+    }
+
+    StrictMode.ThreadPolicy st = new StrictMode.ThreadPolicy.Builder().build();
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -214,6 +305,113 @@ public class HomeActivity extends AppCompatActivity {
                     JSONObject data = jsonarray.getJSONObject(0);
                     String sound = data.getString("Allergy");
                     int speech= textToSpeech.speak(sound,TextToSpeech.QUEUE_FLUSH,null);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(HomeActivity.this, "Voice not played", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> param = new HashMap<String, String>();
+                Intent intent1 = getIntent();
+                String extraPhoneNumber = intent1.getStringExtra(PHONE);
+                param.put("phonenumber",extraPhoneNumber);
+                return param;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+
+
+
+//    =================
+
+    //select and play voice with method
+
+    private void sendLocationMethod(){
+        ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(false);
+        progressDialog.setTitle("Playing My Voice");
+        progressDialog.show();
+        String url ="http://192.168.0.100:8080/personsafety/selectGuadian.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    progressDialog.dismiss();
+                    JSONObject jsonobject = new JSONObject(response);
+                    JSONArray jsonarray = jsonobject.getJSONArray("GaudianPhoneNumber");
+                    JSONObject data = jsonarray.getJSONObject(0);
+                    String GaudianPhoneNumber = data.getString("GaudianPhoneNumber");
+                    Toast.makeText(HomeActivity.this, "Message Location be sent To:"+GaudianPhoneNumber, Toast.LENGTH_SHORT).show();
+
+//                    sendinggg sms with messageBird.com final MessageResponse response = messageBirdClient.sendMessage("+31XXXXXXXXX", "Hi! This is your first message", phones);
+
+//                    end
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(HomeActivity.this, "Voice not played", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> param = new HashMap<String, String>();
+                Intent intent1 = getIntent();
+                String extraPhoneNumber = intent1.getStringExtra(PHONE);
+                param.put("phonenumber",extraPhoneNumber);
+                return param;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+
+
+
+//    send message
+
+
+    private void sendLocationMethodMessage(){
+        ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(false);
+        progressDialog.setTitle("Playing My Voice");
+        progressDialog.show();
+        String url ="http://192.168.0.100:8080/personsafety/sendmessage.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    progressDialog.dismiss();
+                    JSONObject jsonobject = new JSONObject(response);
+                    JSONArray jsonarray = jsonobject.getJSONArray("GaudianPhoneNumber");
+                    JSONObject data = jsonarray.getJSONObject(0);
+                    String GaudianPhoneNumber = data.getString("GaudianPhoneNumber");
+                    Toast.makeText(HomeActivity.this, "Message Location be sent To:"+GaudianPhoneNumber, Toast.LENGTH_SHORT).show();
+
+//                    sendinggg sms with messageBird.com final MessageResponse response = messageBirdClient.sendMessage("+31XXXXXXXXX", "Hi! This is your first message", phones);
+
+//                    end
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeActivity">
+
     <TextView
         android:id="@+id/viewPhonetxt"
         android:layout_width="wrap_content"
@@ -108,8 +109,8 @@
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="209dp"
-        android:layout_height="251dp"
+        android:layout_width="203dp"
+        android:layout_height="152dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
@@ -120,6 +121,17 @@
         android:text="@string/Instruction"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtmylocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
