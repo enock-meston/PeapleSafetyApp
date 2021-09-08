@@ -66,7 +66,8 @@ import java.util.Map;
 public class HomeActivity extends AppCompatActivity {
 
     Button l;
-    TextView viewPhone, locationView;
+    TextView viewPhone;
+    TextView locationView;
     ImageView LocationImage, PoliceHelpLineImage, VoiceImage, imagePlay;
     TextToSpeech textToSpeech;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -194,13 +195,6 @@ public class HomeActivity extends AppCompatActivity {
                         locationView.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Latitude</b></font>" +
                                         addressList.get(0).getLatitude()
-                                //=============
-                                //=============
-
-                                //=============
-                                //=============
-
-
                         ));
                         sendLocationMethod();
                         sendLocationMethodMessage();
@@ -248,7 +242,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Send your Voive Allergy to HeadQuater");
         progressDialog.show();
-        String url ="http://192.168.0.100:8080/personsafety/askforhelp.php";
+        String url ="http://192.168.20.170:8080/personsafety/askforhelp.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -293,7 +287,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.0.100:8080/personsafety/selectVoice.php";
+        String url ="http://192.168.20.170:8080/personsafety/selectVoice.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -343,7 +337,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.0.100:8080/personsafety/selectGuadian.php";
+        String url ="http://192.168.20.170:8080/personsafety/selectGuadian.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -396,7 +390,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.0.100:8080/personsafety/sendmessage.php";
+        String url ="http://192.168.20.170:8080/personsafety/sendmessage.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -408,11 +402,6 @@ public class HomeActivity extends AppCompatActivity {
                     JSONObject data = jsonarray.getJSONObject(0);
                     String GaudianPhoneNumber = data.getString("GaudianPhoneNumber");
                     Toast.makeText(HomeActivity.this, "Message Location be sent To:"+GaudianPhoneNumber, Toast.LENGTH_SHORT).show();
-
-//                    sendinggg sms with messageBird.com final MessageResponse response = messageBirdClient.sendMessage("+31XXXXXXXXX", "Hi! This is your first message", phones);
-
-//                    end
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

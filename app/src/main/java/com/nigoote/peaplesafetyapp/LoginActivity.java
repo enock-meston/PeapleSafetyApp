@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Logging");
         progressDialog.show();
-        String url ="http://192.168.0.100:8080/personsafety/login.php";
+        String url ="http://192.168.20.170:8080/personsafety/login.php";
         RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

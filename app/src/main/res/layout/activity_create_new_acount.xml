@@ -99,6 +99,7 @@
                     android:ems="10"
                     android:hint="Enter Phone"
                     android:inputType="phone"
+                    android:maxLength="16"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp" />
 
@@ -136,6 +137,7 @@
                     android:ems="10"
                     android:hint="Enter Gaudian PhoneNumber "
                     android:inputType="phone"
+                    android:maxLength="16"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp" />
 
