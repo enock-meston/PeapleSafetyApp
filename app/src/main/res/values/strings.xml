@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PSApp</string>
+    <string name="app_name">Women Safety App</string>
 
     <string-array name="chooseGender">
         <item>Male</item>

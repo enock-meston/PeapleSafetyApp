@@ -15,7 +15,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="25dp"
-        android:text="Welcome to Personal Safety App"
+        android:text="Welcome to Women Safety App"
         android:textColor="@color/purple_700"
         android:textSize="26sp"
         android:textStyle="bold"

@@ -196,6 +196,7 @@ public class HomeActivity extends AppCompatActivity {
                                 "<font color='#6200EE'><b>Latitude</b></font>" +
                                         addressList.get(0).getLatitude()
                         ));
+
                         sendLocationMethod();
                         sendLocationMethodMessage();
                     } catch (IOException e) {
@@ -205,6 +206,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     StrictMode.ThreadPolicy st = new StrictMode.ThreadPolicy.Builder().build();
