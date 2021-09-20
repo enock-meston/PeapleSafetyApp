@@ -9,7 +9,6 @@ import android.os.Handler;
 public class MainActivity extends AppCompatActivity {
 
     public static int SPLASH_TIME_OUT = 3000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

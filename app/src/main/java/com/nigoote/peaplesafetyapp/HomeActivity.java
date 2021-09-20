@@ -65,7 +65,6 @@ import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button l;
     TextView viewPhone;
     TextView locationView;
     ImageView LocationImage, PoliceHelpLineImage, VoiceImage, imagePlay;
@@ -244,7 +243,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Send your Voive Allergy to HeadQuater");
         progressDialog.show();
-        String url ="http://192.168.20.170:8080/personsafety/askforhelp.php";
+        String url ="http://192.168.1.156:8080/personsafety/askforhelp.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -289,7 +288,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.20.170:8080/personsafety/selectVoice.php";
+        String url ="http://192.168.1.156:8080/personsafety/selectVoice.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -339,7 +338,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.20.170:8080/personsafety/selectGuadian.php";
+        String url ="http://192.168.1.156:8080/personsafety/selectGuadian.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -392,7 +391,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.20.170:8080/personsafety/sendmessage.php";
+        String url ="http://192.168.1.156:8080/personsafety/sendmessage.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

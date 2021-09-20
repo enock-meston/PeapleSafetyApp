@@ -198,8 +198,6 @@
                     android:background="@drawable/custombutton"
                     android:text="Save" />
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 
