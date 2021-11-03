@@ -191,13 +191,14 @@ public class HomeActivity extends AppCompatActivity {
                                 location.getLatitude(), location.getLongitude(), 1
                         );
 //set latitude
-                        locationView.setText(Html.fromHtml(
+                         locationView.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Latitude</b></font>" +
                                         addressList.get(0).getLatitude()
                         ));
+                         String location1 = String.valueOf(addressList.get(0).getLatitude());
 
                         sendLocationMethod();
-                        sendLocationMethodMessage();
+                        sendLocationMethodMessage(location1);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -243,7 +244,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Send your Voive Allergy to HeadQuater");
         progressDialog.show();
-        String url ="http://192.168.1.156:8080/personsafety/askforhelp.php";
+        String url ="http://192.168.137.1:8080/personsafety/askforhelp.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -288,7 +289,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.1.156:8080/personsafety/selectVoice.php";
+        String url ="http://192.168.137.1:8080/personsafety/selectVoice.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -338,7 +339,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.1.156:8080/personsafety/selectGuadian.php";
+        String url ="http://192.168.137.1:8080/personsafety/selectGuadian.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -385,13 +386,13 @@ public class HomeActivity extends AppCompatActivity {
 //    send message
 
 
-    private void sendLocationMethodMessage(){
+    private void sendLocationMethodMessage(final String locationView1){
         ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
         progressDialog.setCancelable(false);
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.1.156:8080/personsafety/sendmessage.php";
+        String url ="http://192.168.137.1:8080/personsafety/sendmessage.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -421,6 +422,7 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent1 = getIntent();
                 String extraPhoneNumber = intent1.getStringExtra(PHONE);
                 param.put("phonenumber",extraPhoneNumber);
+                param.put("location", String.valueOf(locationView1));
                 return param;
             }
         };
