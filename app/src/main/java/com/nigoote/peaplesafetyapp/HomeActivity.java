@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public static final String PHONE = "PHONE";
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,7 +190,7 @@ public class HomeActivity extends AppCompatActivity {
                         List<Address> addressList = geocoder.getFromLocation(
                                 location.getLatitude(), location.getLongitude(), 1
                         );
-//set latitude
+                //set latitude
                          locationView.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Latitude</b></font>" +
                                         addressList.get(0).getLatitude()
@@ -244,7 +244,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Send your Voive Allergy to HeadQuater");
         progressDialog.show();
-        String url ="http://192.168.137.1:8080/personsafety/askforhelp.php";
+        String url ="http://192.168.43.103:8080/personsafety/askforhelp.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -289,7 +289,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.137.1:8080/personsafety/selectVoice.php";
+        String url ="http://192.168.43.103:8080/personsafety/selectVoice.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -339,7 +339,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.137.1:8080/personsafety/selectGuadian.php";
+        String url ="http://192.168.43.103:8080/personsafety/selectGuadian.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -392,7 +392,7 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Playing My Voice");
         progressDialog.show();
-        String url ="http://192.168.137.1:8080/personsafety/sendmessage.php";
+        String url ="http://192.168.43.103:8080/personsafety/sendmessage.php";
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

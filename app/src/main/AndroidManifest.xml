@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".HomeActivity" />
         <activity android:name=".CreateNewAcount"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".LoginActivity"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

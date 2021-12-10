@@ -8,8 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -36,8 +38,10 @@ public class LoginActivity extends AppCompatActivity {
      Button login;
      CheckBox loginState;
      EditText PhoneNumberLg,PasswordLg;
+
     SharedPreferences sharedPreferences;
     private String phone;
+    boolean VISIBLE_PASSWORD = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +53,34 @@ public class LoginActivity extends AppCompatActivity {
         loginState = (CheckBox) findViewById(R.id.checkBox);
         login = (Button) findViewById(R.id.loginbtn);
         NewAccountLink = (TextView) findViewById(R.id.newaccountlink);
+        PasswordLg.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT=0;
+                final int DRAWABLE_TOP=1;
+                final int DRAWABLE_RIGHT=2;
+                final int DRAWABLE_BOTTON=3;
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    if(VISIBLE_PASSWORD){
+                            VISIBLE_PASSWORD = false;
+                            PasswordLg.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            PasswordLg.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_baseline_lock_24,0,R.drawable.ic_baseline_visibility_off_24,0);
+                        }else {
+                            VISIBLE_PASSWORD = true;
+                            PasswordLg.setInputType(InputType.TYPE_CLASS_TEXT);
+                            PasswordLg.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_baseline_lock_24,0,R.drawable.ic_baseline_visibility_24,0);
+                        }
+                        return false;
+                    }
+                return false;
+            }
+        });
         NewAccountLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentnew = new Intent(LoginActivity.this,CreateNewAcount.class);
                 startActivity(intentnew);
-                finish();
+
             }
         });
 
@@ -76,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
 
         if (loginStatus.equals("loggedin")){
             String txtph= PhoneNumberLg.getText().toString();
-
         }
     }
 
@@ -93,8 +118,9 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Logging");
         progressDialog.show();
-        String url ="http://192.168.137.1:8080/personsafety/login.php";
+        String url ="http://192.168.43.103:8080/personsafety/login.php";
         RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
+
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -132,5 +158,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
         requestQueue.add(request);
+        ///end
     }
 }

@@ -113,6 +113,7 @@
         android:layout_height="152dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="80dp"
         android:gravity="center"
         android:shadowColor="@color/purple_700"
         android:shadowDx="12"
@@ -126,14 +127,15 @@
 
     <TextView
         android:id="@+id/txtmylocation"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.16000003" />
 
 
     <!--    <Button-->

@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,6 +39,7 @@ public class CreateNewAcount extends AppCompatActivity {
     Button BtnNewAccount;
     String fname,lname,phone,password1,address,allergy;
     RequestQueue requestQueue;
+    boolean VISIBLE_PASSWORD = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,29 @@ public class CreateNewAcount extends AppCompatActivity {
         Addresses = (EditText) findViewById(R.id.Address);
         Allergy = (EditText) findViewById(R.id.Allergy);
         BtnNewAccount = (Button) findViewById(R.id.savebutton);
+
+        Pass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT=0;
+                final int DRAWABLE_TOP=1;
+                final int DRAWABLE_RIGHT=2;
+                final int DRAWABLE_BOTTON=3;
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    if(VISIBLE_PASSWORD){
+                        VISIBLE_PASSWORD = false;
+                        Pass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        Pass.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_baseline_lock_24,0,R.drawable.ic_baseline_visibility_off_24,0);
+                    }else {
+                        VISIBLE_PASSWORD = true;
+                        Pass.setInputType(InputType.TYPE_CLASS_TEXT);
+                        Pass.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_baseline_lock_24,0,R.drawable.ic_baseline_visibility_24,0);
+                    }
+                    return false;
+                }
+                return false;
+            }
+        });
 
         BtnNewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +109,7 @@ public class CreateNewAcount extends AppCompatActivity {
         progressDialog.setIndeterminate(false);
         progressDialog.setTitle("Registering New Account");
         progressDialog.show();
-        String url ="http://192.168.137.1:8080/personsafety/register.php";
+        String url ="http://192.168.43.103:8080/personsafety/register.php";
         RequestQueue requestQueue = Volley.newRequestQueue(CreateNewAcount.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
